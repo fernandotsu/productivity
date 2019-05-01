@@ -24,4 +24,22 @@ module.exports = app => {
         .get(app.api.step.getById)
         .put(app.api.step.save)
         .delete(app.api.step.remove)
+
+    app.route('/task')
+        .get(app.api.task.get)
+        .post(app.api.task.save)
+
+    app.route('/task/:id')
+        .get(app.api.task.getById)
+        .put(app.api.task.save)
+        .delete(app.api.task.remove)
+
+    app.route('/taskhistory')
+        .get(app.api.taskhistory.get)
+        .post(app.api.taskhistory.save)
+
+    app.route('/taskhistory/:id')
+        .get(app.api.taskhistory.getById)
+        .put(app.api.taskhistory.save)
+        .delete(app.api.taskhistory.remove)
 };

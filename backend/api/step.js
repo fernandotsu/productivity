@@ -22,7 +22,7 @@ module.exports = app => {
                 .update(step)
                 .where({ id: step.id })
                 .then(_ => res.status(204).send())
-                .catch(err => res.status(500).send(500))
+                .catch(err => res.status(500).send(err))
         } else {
             var sequencialOrdem = 1;
             const stepOrdem = await app.db('step')
@@ -70,10 +70,7 @@ module.exports = app => {
         app.db('step')
             .where({ id: req.params.id })
             .first()
-            .then(st => {
-                st.content = st.content.toString();
-                return res.json(st);
-            })
+            .then(st => res.json(st))
             .catch(err => res.status(500).send(err));
     }
 

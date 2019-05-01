@@ -15,7 +15,7 @@ exports.up = function (knex, Promise) {
             .inTable('users')
         table.integer('allocated3').references('id')
             .inTable('users')
-        table.dateTime('createdAt').notNull()
+        table.dateTime('createdAt').notNull().defaultTo(knex.fn.now())
         table.dateTime('startAt').nullable()
         table.dateTime('endAt').nullable()
     })

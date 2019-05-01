@@ -7,7 +7,8 @@ exports.up = function (knex, Promise) {
             .inTable('task').notNull()
         t.integer('userId').references('id')
             .inTable('users').notNull()
-        t.dateTime('createdAt').notNull()
+        t.dateTime('createdAt').notNull().defaultTo(knex.fn.now())
+        t.boolean('note').notNull().defaultTo(false)
     })
 };
 

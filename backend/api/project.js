@@ -68,10 +68,7 @@ module.exports = app => {
         app.db('project')
             .where({ id: req.params.id })
             .first()
-            .then(proj => {
-                proj.content = proj.content.toString();
-                return res.json(proj);
-            })
+            .then(proj => res.json(proj))
             .catch(err => res.status(500).send(err))
     }
 
