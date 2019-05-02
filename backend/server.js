@@ -5,10 +5,11 @@ const db = require('./config/db.js');
 app.db = db;
 
 consign()
-    .then('/config/middlewares.js')
-    .then('/api/validation.js')
-    .then('/api')
-    .then('/config/routes.js')
+    .include('./config/passport.js')
+    .then('./config/middlewares.js')
+    .then('./api/validation.js')
+    .then('./api')
+    .then('./config/routes.js')
     .into(app)
 
 app.listen(process.env.PORT || 3333, () => {

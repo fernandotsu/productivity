@@ -1,5 +1,5 @@
 module.exports = app => {
-    const { existsOrError, notExistsOrError } = app.api.validation;
+    const { existsOrError } = app.api.validation;
 
     const save = async (req, res) => {
         const taskhistory = { ...req.body };
