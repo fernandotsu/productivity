@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Link } from 'react-router-dom';
-import fb from '../../services/Fire';
 
 import './styles.css';
-
-const db = fb.firestore()
 
 export default class Main extends Component {
     constructor() {
@@ -16,31 +13,7 @@ export default class Main extends Component {
     }
 
     componentWillMount = () => {
-        // db.collection("project").get().then(function (doc) {
-        //     console.log(doc);
-        //     if (doc && doc.exists) {
-        //         const myData = doc.data();
-        //         console.log(myData);
-        //     }
-        // }).catch(function (error) {
-        //     console.log("Houve um erro ", error);
-        // });
-        var query = fb.firestore()
-            .collection('project')
-            .orderBy('name', 'desc')
-            .limit(50);
 
-        query.onSnapshot(function (snapshot) {
-            if (!snapshot.size) return console.log("VAZIO"); // Display "There are no restaurants".
-
-            snapshot.docChanges().forEach(function (change) {
-                if (change.type === 'removed') {
-                    console.log(change.doc);
-                } else {
-                    console.log(change.doc);
-                }
-            });
-        });
     }
 
     togglePopup = (e) => {
@@ -109,16 +82,6 @@ class Popup extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault();
         console.log(this.state);
-
-        db.collection("project").add({
-            name: this.state.projeto,
-            inicio: this.state.inicio,
-            final: this.state.final
-        }).then(function (docRef) {
-            console.log("Document written with ID: ", docRef.id);
-        }).catch(function (error) {
-            console.error("Error adding document: ", error);
-        });
     }
 
     handleInputChange = (e) => {

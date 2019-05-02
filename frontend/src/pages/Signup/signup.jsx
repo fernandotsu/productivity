@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import api from '../../services/api';
 
 import './styles.css';
-import fire from '../../services/Fire';
 
 export default class Signup extends Component {
     state = {
@@ -11,19 +11,12 @@ export default class Signup extends Component {
         "error": ''
     };
 
-    handleSubmit = (e) => {
+    handleSubmit = async (e) => {
         e.preventDefault();
         console.log(this.state)
 
-        if (this.state.password === this.state.password2) {
-            fire.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
-                .catch((error) => {
-                    console.log(error);
-                })
-        } else {
-            console.log('As senhas são diferentes');
-        }
-
+        const response = await api.get('project');
+        console.log(response.data);
     }
 
     handleInputChange = (e) => {

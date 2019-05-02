@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 
 import './styles.css';
-import fire from '../../services/Fire';
 
 export default class Signin extends Component {
     state = {
@@ -14,14 +13,6 @@ export default class Signin extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         console.log(this.state)
-
-        fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
-            .then((u) => { })
-            .catch((error) => {
-                console.log(error);
-                this.setState({ error: error.message });
-                console.log(this.state.error);
-            })
     }
 
     handleInputChange = (e) => {
