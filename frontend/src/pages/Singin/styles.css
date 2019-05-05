@@ -62,3 +62,9 @@
 #main-container form button:hover {
     opacity: 0.8;
 }
+
+#main-container .boxLogin {
+    background: #70707075;
+    padding: 20px;
+    border-radius: 5px;
+}

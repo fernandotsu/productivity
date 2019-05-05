@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import api from '../../services/api';
 
 import './styles.css';
 
@@ -14,9 +13,6 @@ export default class Signup extends Component {
     handleSubmit = async (e) => {
         e.preventDefault();
         console.log(this.state)
-
-        const response = await api.get('project');
-        console.log(response.data);
     }
 
     handleInputChange = (e) => {
