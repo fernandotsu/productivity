@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Link } from 'react-router-dom';
+import axios from 'axios';
+import { baseApiUrl, userKey } from '../../services/api';
 
 import './styles.css';
 
@@ -12,8 +14,24 @@ export default class Main extends Component {
         };
     }
 
-    componentWillMount = () => {
+    async componentDidMount() {
+        const json = localStorage.getItem(userKey);
+        const userData = JSON.parse(json);
 
+        if (!userData) {
+            this.validatingToken = false;
+            this.props.history.push('/signin');
+            return;
+        }
+
+        const res = await axios.post(`${baseApiUrl}/validateToken`, { token: userData });
+
+        if (res.data) {
+            // this.props.history.push('/main');
+        } else {
+            this.props.history.push('/signin');
+            localStorage.removeItem(userKey);
+        }
     }
 
     togglePopup = (e) => {
