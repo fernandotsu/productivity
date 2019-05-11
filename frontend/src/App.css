@@ -17,3 +17,9 @@ body {
   color: #333;
   -webkit-font-smoothing: antialiased !important;
 }
+
+#components-layout-demo-side .logo {
+  height: 32px;
+  background: rgba(255,255,255,.2);
+  margin: 16px;
+}

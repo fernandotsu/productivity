@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
-import Main from './pages/Main/main';
-import Signin from './pages/Singin/signin';
-import Signup from './pages/Signup/signup';
+import Main from './pages/Home/home';
+import Signin from './pages/Login/signin';
+import Signup from './pages/Login/signup';
 
 const Routes = () => (
     <BrowserRouter>

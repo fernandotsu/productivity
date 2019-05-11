@@ -37,10 +37,6 @@ module.exports = app => {
     const validateToken = async (req, res) => {
         const userData = req.body || null;
 
-        console.log(`userData => ${userData}`);
-        console.log(`userData => ${userData.data}`);
-        console.log(`token => ${userData.token}`);
-
         try {
             if (userData) {
                 const token = jwt.decode(userData.token, authSecret)

@@ -60,7 +60,7 @@ module.exports = app => {
         app.db('project')
             .select('id', 'name', 'completed', 'canceled')
             .limit(limit).offset(page * limit - limit)
-            .then(project => res.json({ data: project, count, limit }))
+            .then(proj => res.json(proj))
             .catch(err => res.status(500).send(err))
     }
 
