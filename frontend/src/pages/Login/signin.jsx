@@ -20,7 +20,6 @@ export default class Signin extends Component {
 
         await axios.post(`${baseApiUrl}/signin`, this.state)
             .then(res => {
-                console.log(res.data.token);
                 localStorage.setItem(userKey, JSON.stringify(res.data.token));
                 this.props.history.push('/');
             })
