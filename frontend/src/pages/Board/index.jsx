@@ -6,8 +6,21 @@ import '../Board/styles.css';
 const { Header, Content, Footer } = Layout;
 
 export default class Board extends Component {
+    state = {
+        steps: [{
+            id: 1,
+            name: "To do",
+        }, {
+            id: 2,
+            name: "Doing",
+        }, {
+            id: 3,
+            name: "Done",
+        }],
+    };
 
     render() {
+        const { steps } = this.state;
         return (
             <BrowserRouter>
                 <Layout>
@@ -31,16 +44,32 @@ export default class Board extends Component {
                         </Breadcrumb>
                         <div style={{ background: '#fff', padding: 24, minHeight: 380 }}>
 
+                            {/* {numbers.map((number) =>
+                            <ListItem key={number.toString()}
+                                    value={number} />
 
-                            <div className="postit postit-yellow" draggable={true} >
-                                <div className="postit-content">
-                                    <label className="titulo-tarefa"><strong>NOME</strong></label>
-                                    <label><strong>Quem:</strong> USER</label>
-                                    <label><strong>Prioridade:</strong> PRIORIDADE</label>
-                                    <label><strong>Término:</strong> DATA</label>
+                        )} */}
+
+                            {steps.map((step) =>
+                                <div style={{ display: 'flex' }}>
+                                    <div className="bloco dropzone" id={`dropzone_${step.id}`}>
+
+                                        <div class="header">
+                                            {step.name}
+                                        </div>
+
+                                        <div className="postit postit-yellow" draggable={true} >
+                                            <div className="postit-content">
+                                                <label className="titulo-tarefa"><strong>NOME</strong></label>
+                                                <label><strong>Quem:</strong> USER</label>
+                                                <label><strong>Prioridade:</strong> PRIORIDADE</label>
+                                                <label><strong>Término:</strong> DATA</label>
+                                            </div>
+                                        </div>
+
+                                    </div>
                                 </div>
-                            </div>
-
+                            )}
 
                         </div>
                     </Content>

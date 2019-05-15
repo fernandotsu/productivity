@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { baseApiUrl, userKey } from '../../services/api';
 
 import './styles.css';
+import { message } from 'antd';
 
 export default class Signin extends Component {
     constructor() {
@@ -22,6 +23,7 @@ export default class Signin extends Component {
             .then(res => {
                 localStorage.setItem(userKey, JSON.stringify(res.data.token));
                 this.props.history.push('/');
+                message.success('Usuário logado');
             })
             .catch(err => console.log(`ESSE EH O ERRO: ${err}`));
 
